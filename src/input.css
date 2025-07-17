@@ -1,0 +1,13 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-warmbeige: #d9b88c;
+  --color-beige: #e3c6a8;
+  --color-lightbeige: #f0e1c6;
+  --color-white: #f7f9f9;
+}
+
+@font-face {
+  font-family: oswald;
+  src: url(./assets/fonts/Oswald/Oswald);
+}
