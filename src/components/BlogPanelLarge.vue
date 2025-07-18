@@ -1,5 +1,5 @@
 <template>
-  <div class="py-8 border-b-4 bg-beige">
+  <div class="py-8 border-b border-gray-800 bg-beige">
     <div class="w-full pb-8 text-center text-4xl font-medium">Featured Stories</div>
     <div class="flex justify-center">
       <div class="px-2 w-100">
