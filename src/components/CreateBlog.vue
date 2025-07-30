@@ -13,8 +13,10 @@
 export default {
   data() {
     return {
-      titleF: '',
-      contentF: '',
+      blogInfo: {
+        titleF: '',
+        contentF: '',
+      },
     }
   },
   methods: {
@@ -31,8 +33,8 @@ export default {
             content: this.contentF,
           }),
         })
-        this.titleF = ''
-        this.contentF = ''
+        this.blogInfo.titleF = ''
+        this.blogInfo.contentF = ''
       } catch (err) {
         console.log('error', err)
       }

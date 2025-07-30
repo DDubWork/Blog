@@ -6,36 +6,36 @@
         <div class="space-y-4">
           <div class="flex gap-4">
             <div class="flex flex-col w-1/2">
-              <label for="fname">First Name:</label>
+              <label for="fname">Name:</label>
               <input
-                v-model="formfirstname"
-                name="fname"
+                v-model="formData.formfirstname"
+                name="name"
                 type="text"
                 class="border rounded px-2 py-1"
               />
             </div>
             <div class="flex flex-col w-1/2">
-              <label for="lname">Last Name:</label>
+              <label for="email">Email:</label>
               <input
-                v-model="formlastname"
-                name="lname"
+                v-model="formData.formlastname"
+                name="email"
                 type="text"
                 class="border rounded px-2 py-1"
               />
             </div>
           </div>
           <div class="flex pb-6 flex-col">
-            <label for="contents">Contents:</label>
+            <label for="message">message:</label>
             <textarea
-              v-model="formcontents"
-              name="contents"
+              v-model="formData.formcontents"
+              name="message"
               type="text"
               class="border px-2 py-1"
             ></textarea>
           </div>
-          <button type="submit" value="Submit">Send</button>
         </div>
       </form>
+      <button @click="formSubmit()">Send</button>
     </div>
   </div>
 </template>
@@ -44,10 +44,30 @@
 export default {
   data() {
     return {
-      formfirstname: this.formfirstname,
-      formlastname: this.formlastname,
-      formcontents: this.formcontents,
+      formData: {
+        message: '',
+        name: '',
+        email: '',
+      },
     }
+  },
+  methods: {
+    async formSubmit() {
+      try {
+        const response = await fetch('http://localhost:8000/form-submit', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(this.formData),
+        })
+        this.formData.name = ''
+        this.formData.email = ''
+        this.formData.message = ''
+      } catch (err) {
+        console.log(err)
+      }
+    },
   },
 }
 </script>

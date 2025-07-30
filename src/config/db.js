@@ -13,7 +13,9 @@ const query = await pool.query('SELECT * FROM blogs')
 
 export async function CreateBlog(data) {
   data = JSON.parse(data.toString())
-  const titleF = data.title
-  const contentF = data.content
-  await pool.query('INSERT INTO blogs (title, text) VALUES (?, ?)', [titleF, contentF])
+  if (data.blogInfo) {
+    const titleF = data.blogInfo.title
+    const contentF = data.blogInfo.content
+    await pool.query('INSERT INTO blogs (title, text) VALUES (?, ?)', [titleF, contentF])
+  }
 }
